@@ -26,6 +26,11 @@
   "lint-staged": {
     "src/**/*.js": [ "prettier --write", "eslint --fix", "git add" ]
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
   "files": [ "src", "dist/*.js" ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",

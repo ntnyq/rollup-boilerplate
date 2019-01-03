@@ -41,7 +41,7 @@ module.exports = {
     }
   ],
 
-  scopes: [],
+  scopes: [ 'src', 'config', 'package' ],
 
   allowCustomScopes: true,
   allowBreakingChanges: [ 'feat', 'fix' ]

@@ -7,7 +7,7 @@ export default {
   ...baseConfig,
   output: [
     {
-      file: `dist${name}.js`,
+      file: `dist/${name}.js`,
       format: 'umd',
       name,
       sourcemap: true

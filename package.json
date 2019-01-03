@@ -1,10 +1,14 @@
 {
   "name": "foobar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist/foobar.cjs.js",
   "module": "dist/foobar.esm.js",
   "unpkg": "dist/foobar.min.js",
-  "keywords": [ "foo", "bar", "rollup" ],
+  "keywords": [
+    "foo",
+    "bar",
+    "rollup"
+  ],
   "author": "ntnyq <ntnyq13@gmail.com>",
   "repository": "ntnyq/rollup-boilterplate",
   "license": "MIT",
@@ -24,14 +28,21 @@
     }
   },
   "lint-staged": {
-    "src/**/*.js": [ "prettier --write", "eslint --fix", "git add" ]
+    "src/**/*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
     }
   },
-  "files": [ "src", "dist/*.js" ],
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",

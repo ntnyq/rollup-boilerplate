@@ -46,7 +46,7 @@ export default [
     ...baseConfig,
     output: [
       {
-        file: `dist/${name}.min,js`,
+        file: `dist/${name}.min.js`,
         format: 'umd',
         name,
         banner

@@ -1,0 +1,10 @@
+.circleci/
+.vscode/
+docs/
+scripts/
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitattributes
+yarn.lock

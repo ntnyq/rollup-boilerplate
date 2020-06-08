@@ -1,8 +1,8 @@
-import replace from 'rollup-plugin-replace'
-import resolve from 'rollup-plugin-node-resolve'
-import json from 'rollup-plugin-json'
-import commonjs from 'rollup-plugin-commonjs'
-import babel from 'rollup-plugin-babel'
+import replace from '@rollup/plugin-replace'
+import resolve from '@rollup/plugin-node-resolve'
+import json from '@rollup/plugin-json'
+import commonjs from '@rollup/plugin-commonjs'
+import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 
 const {
@@ -58,8 +58,8 @@ export default [
       ...(opts.format !== 'es'
         ? [
           babel({
-            runtimeHelpers: true,
             exclude: [/\/core-js\//, /@babel\/runtime/],
+            babelHelpers: 'bundled',
           }),
         ]
         : []),

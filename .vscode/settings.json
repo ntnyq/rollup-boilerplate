@@ -1,9 +1,15 @@
 {
   "eslint.enable": true,
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.eslint.fixAll": true
   },
   "[javascript]": {
     "editor.formatOnSave": false
-  }
+  },
+  "cSpell.words": [
+    "bumpp",
+    "changelogithub",
+    "pnpm"
+  ]
 }

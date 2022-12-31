@@ -1,17 +1,16 @@
-import path from 'node:path'
+import { resolve } from 'node:path'
 import { readFileSync } from 'node:fs'
 import { URL, fileURLToPath } from 'node:url'
 import type { RollupOptions } from 'rollup'
 import { defineConfig } from 'rollup'
-import commonjs from '@rollup/plugin-commonjs'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
+import replace from '@rollup/plugin-replace'
+import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 const __dirname = fileURLToPath(new URL(`.`, import.meta.url))
-const resolve = (...args: string[]) => path.resolve(__dirname, ...args)
 
 const pkg = JSON.parse(readFileSync(`./package.json`, 'utf8'))
 const banner = `\
@@ -25,8 +24,8 @@ const banner = `\
 `
 
 export default () => {
-  const input = resolve(`src/index.ts`)
-  const sharablePlugins = [
+  const input = resolve(__dirname, `src/index.ts`)
+  const plugins = [
     commonjs({
       include: `node_modules/**`,
     }),
@@ -47,35 +46,32 @@ export default () => {
   const cjsBuild: RollupOptions = {
     input,
     output: {
-      file: resolve(`dist/index.cjs`),
+      file: resolve(__dirname, `dist/index.cjs`),
       format: `cjs`,
       banner,
     },
-    plugins: [
-      ...sharablePlugins,
-    ],
+    plugins,
   }
   const esmBuild: RollupOptions = {
     input,
     output: {
-      file: resolve(`dist/index.mjs`),
+      file: resolve(__dirname, `dist/index.mjs`),
       format: `esm`,
       banner,
     },
-    plugins: [
-      ...sharablePlugins,
-    ],
+    plugins,
   }
   const umdBuild: RollupOptions = {
     input,
     output: [
       {
-        file: resolve(`dist/index.js`),
+        file: resolve(__dirname, `dist/index.js`),
         format: `umd`,
         name: `FooBar`,
         banner,
-      }, {
-        file: resolve(`dist/index.min.js`),
+      },
+      {
+        file: resolve(__dirname, `dist/index.min.js`),
         format: `umd`,
         name: `FooBar`,
         banner,
@@ -88,9 +84,7 @@ export default () => {
         ],
       },
     ],
-    plugins: [
-      ...sharablePlugins,
-    ],
+    plugins,
   }
   return defineConfig([
     cjsBuild,

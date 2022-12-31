@@ -1,15 +1,25 @@
 {
   "eslint.enable": true,
-  "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": {
-    "source.eslint.fixAll": true
-  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "vue",
+    "yaml",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "json5"
+  ],
   "[javascript]": {
     "editor.formatOnSave": false
   },
   "cSpell.words": [
     "bumpp",
     "changelogithub",
+    "lcov",
     "pnpm"
   ]
 }

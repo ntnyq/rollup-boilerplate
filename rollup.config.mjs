@@ -1,7 +1,6 @@
 import { resolve } from 'node:path'
 import { readFileSync } from 'node:fs'
 import { URL, fileURLToPath } from 'node:url'
-import type { RollupOptions } from 'rollup'
 import { defineConfig } from 'rollup'
 import json from '@rollup/plugin-json'
 import terser from '@rollup/plugin-terser'
@@ -23,7 +22,7 @@ const banner = `\
  */
 `
 
-export default () => {
+export default defineConfig(() => {
   const input = resolve(__dirname, `src/index.ts`)
   const plugins = [
     commonjs({
@@ -40,55 +39,58 @@ export default () => {
       preventAssignment: true,
     }),
     typescript({
-      tsconfig: `./tsconfig.build.json`,
+      tsconfig: `./tsconfig.lib.json`,
     }),
   ]
-  const cjsBuild: RollupOptions = {
-    input,
-    output: {
-      file: resolve(__dirname, `dist/index.cjs`),
-      format: `cjs`,
-      banner,
-    },
-    plugins,
-  }
-  const esmBuild: RollupOptions = {
-    input,
-    output: {
-      file: resolve(__dirname, `dist/index.mjs`),
-      format: `esm`,
-      banner,
-    },
-    plugins,
-  }
-  const umdBuild: RollupOptions = {
-    input,
-    output: [
-      {
-        file: resolve(__dirname, `dist/index.js`),
-        format: `umd`,
-        name: `FooBar`,
+
+  return [
+    // cjs
+    {
+      input,
+      output: {
+        file: resolve(__dirname, `dist/index.cjs`),
+        format: `cjs`,
         banner,
       },
-      {
-        file: resolve(__dirname, `dist/index.min.js`),
-        format: `umd`,
-        name: `FooBar`,
+      plugins,
+    },
+
+    // esm
+    {
+      input,
+      output: {
+        file: resolve(__dirname, `dist/index.mjs`),
+        format: `esm`,
         banner,
-        plugins: [
-          terser({
-            format: {
-              comments: `some`,
-            },
-          }),
-        ],
       },
-    ],
-    plugins,
-  }
-  return defineConfig([
-    cjsBuild,
-    esmBuild,
-    umdBuild,
-  ])
-}
+      plugins,
+    },
+
+    // umd
+    {
+      input,
+      output: [
+        {
+          file: resolve(__dirname, `dist/index.js`),
+          format: `umd`,
+          name: `FooBar`,
+          banner,
+        },
+        {
+          file: resolve(__dirname, `dist/index.min.js`),
+          format: `umd`,
+          name: `FooBar`,
+          banner,
+          plugins: [
+            terser({
+              format: {
+                comments: `some`,
+              },
+            }),
+          ],
+        },
+      ],
+      plugins,
+    },
+  ]
+})

@@ -2,9 +2,9 @@ import { cube } from './math'
 
 const env = process.env.NODE_ENV
 
-export function foo (x: number) {
-  if (env !== `production`) {
-    console.log(`Not running in production mode`)
+export function foo(x: number) {
+  if (env !== 'production') {
+    console.log('Not running in production mode')
   }
 
   if (x) {

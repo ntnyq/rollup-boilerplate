@@ -3,8 +3,8 @@
   "compilerOptions": {
     "composite": true,
     "lib": ["DOM"],
-    "moduleResolution": "nodenext",
     "types": ["node"]
   },
-  "include": ["./vitest.config.ts"]
+  "include": ["./test", "./src", "./vitest.config.ts"],
+  "exclude": ["**/dist"]
 }

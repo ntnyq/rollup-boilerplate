@@ -1,6 +1,7 @@
 {
   "name": "rollup-boilerplate",
   "version": "0.0.1",
+  "private": true,
   "packageManager": "pnpm@8.8.0",
   "description": "JavaScript library develop boilerplate based on rollup",
   "keywords": [
@@ -37,7 +38,7 @@
     "coverage": "vitest --coverage",
     "lint": "eslint .",
     "prepare": "husky install",
-    "release": "bumpp && npm publish",
+    "release": "bumpp",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },

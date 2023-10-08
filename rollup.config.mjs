@@ -9,9 +9,9 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 
-const __dirname = fileURLToPath(new URL(`.`, import.meta.url))
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
-const pkg = JSON.parse(readFileSync(`./package.json`, 'utf8'))
+const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
 const banner = `\
 /*!
  * ${pkg.name} - ${pkg.description}
@@ -23,10 +23,10 @@ const banner = `\
 `
 
 export default defineConfig(() => {
-  const input = resolve(__dirname, `src/index.ts`)
+  const input = resolve(__dirname, 'src/index.ts')
   const plugins = [
     commonjs({
-      include: `node_modules/**`,
+      include: 'node_modules/**',
     }),
     json(),
     nodeResolve({
@@ -34,12 +34,11 @@ export default defineConfig(() => {
       preferBuiltins: true,
     }),
     replace({
-      'process.env.NODE_ENV': JSON.stringify(`production`),
-      'process.env.VERSION': JSON.stringify(pkg.version),
+      __VERSION__: JSON.stringify(pkg.version),
       preventAssignment: true,
     }),
     typescript({
-      tsconfig: `./tsconfig.lib.json`,
+      tsconfig: './tsconfig.lib.json',
     }),
   ]
 
@@ -48,8 +47,8 @@ export default defineConfig(() => {
     {
       input,
       output: {
-        file: resolve(__dirname, `dist/index.cjs`),
-        format: `cjs`,
+        file: resolve(__dirname, 'dist/index.cjs'),
+        format: 'cjs',
         banner,
       },
       plugins,
@@ -59,8 +58,8 @@ export default defineConfig(() => {
     {
       input,
       output: {
-        file: resolve(__dirname, `dist/index.mjs`),
-        format: `esm`,
+        file: resolve(__dirname, 'dist/index.mjs'),
+        format: 'esm',
         banner,
       },
       plugins,
@@ -71,20 +70,20 @@ export default defineConfig(() => {
       input,
       output: [
         {
-          file: resolve(__dirname, `dist/index.js`),
-          format: `umd`,
-          name: `FooBar`,
+          file: resolve(__dirname, 'dist/index.js'),
+          format: 'umd',
+          name: 'FooBar',
           banner,
         },
         {
-          file: resolve(__dirname, `dist/index.min.js`),
-          format: `umd`,
-          name: `FooBar`,
+          file: resolve(__dirname, 'dist/index.min.js'),
+          format: 'umd',
+          name: 'FooBar',
           banner,
           plugins: [
             terser({
               format: {
-                comments: `some`,
+                comments: 'some',
               },
             }),
           ],

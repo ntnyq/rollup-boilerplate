@@ -3,8 +3,9 @@
   "compilerOptions": {
     "composite": true,
     "lib": ["DOM"],
-    "types": ["node"]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
-  "include": ["./test", "./src", "./vitest.config.ts"],
+  "include": ["./test", "./src", "./vitest.config.ts", "./package.json"],
   "exclude": ["**/dist"]
 }

@@ -7,7 +7,7 @@
 
 ## Features
 
-- ⚡️ [Rollup 3](https://rollupjs.org) and plugins
+- ⚡️ [Rollup v4](https://rollupjs.org) and plugins
 - 🦔 Output `cjs`, `esm` and `umd` formats
 - 📦 Package manage via [pnpm](https://pnpm.io)
 - 🦾 Strong typecheck via [TypeScript](https://www.typescriptlang.org)

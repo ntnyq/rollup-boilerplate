@@ -1,12 +1,6 @@
 import { cube } from './math'
 
-const env = process.env.NODE_ENV
-
 export function foo(x: number) {
-  if (env !== 'production') {
-    console.log('Not running in production mode')
-  }
-
   if (x) {
     return cube(x)
   }
@@ -15,3 +9,7 @@ export function foo(x: number) {
 }
 
 export * from './math'
+
+declare const __VERSION__: string
+
+export const version = __VERSION__

@@ -13,8 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
@@ -25,15 +28,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: [16.14, 18]
+        node: [18.x, 20.x, 22.x]
       fail-fast: false
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - uses: pnpm/action-setup@v2
+          cache: pnpm
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
@@ -44,8 +48,11 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm run coverage

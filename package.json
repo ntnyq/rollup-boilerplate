@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.2.0",
   "private": true,
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.12.3",
   "description": "JavaScript library develop boilerplate based on rollup",
   "keywords": [
     "rollup",
@@ -44,7 +44,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^3.1.0",
+    "@ntnyq/eslint-config": "^3.1.1",
     "@ntnyq/prettier-config": "^1.21.3",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-json": "^6.1.0",
@@ -52,7 +52,7 @@
     "@rollup/plugin-replace": "^6.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
-    "@types/node": "^22.7.7",
+    "@types/node": "^22.8.1",
     "@vitest/coverage-v8": "^2.1.3",
     "bumpp": "^9.7.1",
     "eslint": "^9.13.0",
@@ -61,7 +61,7 @@
     "npm-run-all2": "^7.0.1",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.24.0",
+    "rollup": "^4.24.2",
     "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   },

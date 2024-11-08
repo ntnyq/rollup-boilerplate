@@ -1,7 +1,7 @@
 {
   "name": "rollup-boilerplate",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "packageManager": "pnpm@9.12.3",
   "description": "JavaScript library develop boilerplate based on rollup",

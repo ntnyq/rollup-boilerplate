@@ -1,15 +1,18 @@
-import { resolve } from 'node:path'
-import { readFileSync } from 'node:fs'
-import { URL, fileURLToPath } from 'node:url'
-import { defineConfig } from 'rollup'
-import json from '@rollup/plugin-json'
-import terser from '@rollup/plugin-terser'
-import replace from '@rollup/plugin-replace'
-import commonjs from '@rollup/plugin-commonjs'
-import typescript from '@rollup/plugin-typescript'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
+// @ts-check
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
+/**
+ * @typedef {import('rollup').RollupOptions} RollupOptions
+ */
+
+import { readFileSync } from 'node:fs'
+import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import terser from '@rollup/plugin-terser'
+import typescript from '@rollup/plugin-typescript'
+import { defineConfig } from 'rollup'
+import { resolve } from './scripts/utils.mjs'
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
 const banner = `\
@@ -23,7 +26,10 @@ const banner = `\
 `
 
 export default defineConfig(() => {
-  const input = resolve(__dirname, 'src/index.ts')
+  const input = resolve('src/index.ts')
+  /**
+   * @type {import('rollup').Plugin[]}
+   */
   const plugins = [
     commonjs({
       include: 'node_modules/**',
@@ -42,54 +48,60 @@ export default defineConfig(() => {
     }),
   ]
 
-  return [
-    // cjs
-    {
-      input,
-      output: {
-        file: resolve(__dirname, 'dist/index.cjs'),
-        format: 'cjs',
+  /**
+   * @type RollupOptions
+   */
+  const cjsConfig = {
+    input,
+    output: {
+      file: resolve('dist/index.cjs'),
+      format: 'cjs',
+      banner,
+    },
+    plugins,
+  }
+
+  /**
+   * @type RollupOptions
+   */
+  const esmConfig = {
+    input,
+    output: {
+      file: resolve('dist/index.esm.js'),
+      format: 'esm',
+      banner,
+    },
+    plugins,
+  }
+
+  /**
+   * @type RollupOptions
+   */
+  const umdConfig = {
+    input,
+    output: [
+      {
+        file: resolve('dist/index.js'),
+        format: 'umd',
+        name: 'FooBar',
         banner,
       },
-      plugins,
-    },
-
-    // esm
-    {
-      input,
-      output: {
-        file: resolve(__dirname, 'dist/index.mjs'),
-        format: 'esm',
+      {
+        file: resolve('dist/index.min.js'),
+        format: 'umd',
+        name: 'FooBar',
         banner,
+        plugins: [
+          terser({
+            format: {
+              comments: 'some',
+            },
+          }),
+        ],
       },
-      plugins,
-    },
+    ],
+    plugins,
+  }
 
-    // umd
-    {
-      input,
-      output: [
-        {
-          file: resolve(__dirname, 'dist/index.js'),
-          format: 'umd',
-          name: 'FooBar',
-          banner,
-        },
-        {
-          file: resolve(__dirname, 'dist/index.min.js'),
-          format: 'umd',
-          name: 'FooBar',
-          banner,
-          plugins: [
-            terser({
-              format: {
-                comments: 'some',
-              },
-            }),
-          ],
-        },
-      ],
-      plugins,
-    },
-  ]
+  return [cjsConfig, esmConfig, umdConfig]
 })

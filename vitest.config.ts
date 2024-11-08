@@ -3,9 +3,10 @@ import pkg from './package.json'
 
 export default defineConfig({
   test: {
+    reporters: ['dot'],
     coverage: {
       provider: 'v8',
-      reporter: ['clover', 'json', 'text', 'lcov', 'html'],
+      reporter: ['text', 'lcov', 'json'],
     },
   },
 

@@ -3,6 +3,7 @@
 > JavaScript library develop boilerplate based on rollup.
 
 [![CI](https://github.com/ntnyq/rollup-boilerplate/workflows/CI/badge.svg)](https://github.com/ntnyq/rollup-boilerplate/actions)
+[![CODECOV](https://codecov.io/github/ntnyq/rollup-boilerplate/branch/main/graph/badge.svg)](https://codecov.io/github/ntnyq/rollup-boilerplate)
 [![LICENSE](https://img.shields.io/github/license/ntnyq/rollup-boilerplate.svg)](https://github.com/ntnyq/rollup-boilerplate/blob/main/LICENSE)
 
 ## Features

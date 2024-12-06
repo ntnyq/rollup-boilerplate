@@ -16,12 +16,12 @@ import { resolve } from './scripts/utils.mjs'
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
 const banner = `\
-/*!
+/**!
  * ${pkg.name} - ${pkg.description}
  *
  * @version v${pkg.version}
  * @license ${pkg.license}
- * @copyright 2022-${new Date().getFullYear()} ntnyq
+ * @copyright 2024-${new Date().getFullYear()} ntnyq
  */
 `
 
@@ -54,9 +54,9 @@ export default defineConfig(() => {
   const cjsConfig = {
     input,
     output: {
+      banner,
       file: resolve('dist/index.cjs'),
       format: 'cjs',
-      banner,
     },
     plugins,
   }
@@ -67,9 +67,9 @@ export default defineConfig(() => {
   const esmConfig = {
     input,
     output: {
-      file: resolve('dist/index.esm.js'),
-      format: 'esm',
       banner,
+      file: resolve('dist/index.mjs'),
+      format: 'esm',
     },
     plugins,
   }
@@ -81,16 +81,16 @@ export default defineConfig(() => {
     input,
     output: [
       {
+        banner,
         file: resolve('dist/index.js'),
         format: 'umd',
         name: 'FooBar',
-        banner,
       },
       {
+        banner,
         file: resolve('dist/index.min.js'),
         format: 'umd',
         name: 'FooBar',
-        banner,
         plugins: [
           terser({
             format: {

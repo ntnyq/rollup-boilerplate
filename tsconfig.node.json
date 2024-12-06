@@ -5,6 +5,12 @@
     "lib": ["DOM"],
     "types": ["node"]
   },
-  "include": ["./test", "./src", "./scripts", "./*.config.*", "./package.json"],
+  "include": [
+    "./tests/**/*.ts",
+    "./src/**/*.ts",
+    "./scripts/**/*.ts",
+    "./*.config.*",
+    "./package.json"
+  ],
   "exclude": ["**/dist"]
 }

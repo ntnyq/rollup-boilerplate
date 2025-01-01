@@ -6,10 +6,12 @@
     "types": ["node"]
   },
   "include": [
-    "./tests/**/*.ts",
     "./src/**/*.ts",
+    "./tests/**/*.ts",
     "./scripts/**/*.ts",
-    "./*.config.*",
+    "./*.config.ts",
+    "./rollup.config.ts",
+    "./*.config.mjs",
     "./package.json"
   ],
   "exclude": ["**/dist"]

@@ -49,36 +49,37 @@ export default defineConfig(() => {
   ]
 
   /**
-   * @type RollupOptions
+   * @type {RollupOptions}
    */
-  const cjsConfig = {
+  const cjsOptions = {
     input,
+    plugins,
     output: {
       banner,
       file: resolve('dist/index.cjs'),
       format: 'cjs',
     },
-    plugins,
   }
 
   /**
-   * @type RollupOptions
+   * @type {RollupOptions}
    */
-  const esmConfig = {
+  const esmOptions = {
     input,
+    plugins,
     output: {
       banner,
       file: resolve('dist/index.mjs'),
       format: 'esm',
     },
-    plugins,
   }
 
   /**
-   * @type RollupOptions
+   * @type {RollupOptions}
    */
-  const umdConfig = {
+  const umdOptions = {
     input,
+    plugins,
     output: [
       {
         banner,
@@ -100,8 +101,7 @@ export default defineConfig(() => {
         ],
       },
     ],
-    plugins,
   }
 
-  return [cjsConfig, esmConfig, umdConfig]
+  return [cjsOptions, esmOptions, umdOptions]
 })

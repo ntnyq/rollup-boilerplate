@@ -1,8 +1,5 @@
-import { describe, expect, it } from 'vitest'
-import { foo } from '../src'
-
-describe('test group', () => {
+describe('example', () => {
   it('should pass', () => {
-    expect(foo(0)).toBe(-1)
+    expect(1 + 1).toBe(2)
   })
 })

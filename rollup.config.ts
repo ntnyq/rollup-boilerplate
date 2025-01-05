@@ -1,9 +1,5 @@
 // @ts-check
 
-/**
- * @typedef {import('rollup').RollupOptions} RollupOptions
- */
-
 import { readFileSync } from 'node:fs'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
@@ -12,7 +8,8 @@ import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import { defineConfig } from 'rollup'
-import { resolve } from './scripts/utils.mjs'
+import { resolve } from './scripts/utils'
+import type { RollupOptions } from 'rollup'
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
 const banner = `\
@@ -27,9 +24,6 @@ const banner = `\
 
 export default defineConfig(() => {
   const input = resolve('src/index.ts')
-  /**
-   * @type {import('rollup').Plugin[]}
-   */
   const plugins = [
     commonjs({
       include: 'node_modules/**',
@@ -48,10 +42,7 @@ export default defineConfig(() => {
     }),
   ]
 
-  /**
-   * @type {RollupOptions}
-   */
-  const cjsOptions = {
+  const cjsOptions: RollupOptions = {
     input,
     plugins,
     output: {
@@ -61,10 +52,7 @@ export default defineConfig(() => {
     },
   }
 
-  /**
-   * @type {RollupOptions}
-   */
-  const esmOptions = {
+  const esmOptions: RollupOptions = {
     input,
     plugins,
     output: {
@@ -74,10 +62,7 @@ export default defineConfig(() => {
     },
   }
 
-  /**
-   * @type {RollupOptions}
-   */
-  const umdOptions = {
+  const umdOptions: RollupOptions = {
     input,
     plugins,
     output: [

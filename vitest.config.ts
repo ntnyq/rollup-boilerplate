@@ -7,6 +7,7 @@ export default defineConfig({
   },
 
   test: {
+    globals: true,
     reporters: ['dot'],
     coverage: {
       include: ['src/**/*.ts'],

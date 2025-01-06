@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.3.0",
   "private": true,
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@9.15.3",
   "description": "JavaScript library develop boilerplate based on rollup",
   "keywords": [
     "library",
@@ -58,7 +58,7 @@
     "nano-staged": "^0.8.0",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.4.2",
-    "rollup": "^4.29.2",
+    "rollup": "^4.30.0",
     "rollup-plugin-esbuild": "^6.1.1",
     "typescript": "^5.7.2",
     "vitest": "^3.0.0-beta.3"

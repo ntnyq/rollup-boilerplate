@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@ntnyq/eslint-config": "^3.12.3",
-    "@ntnyq/prettier-config": "^1.22.1",
+    "@ntnyq/prettier-config": "^2.0.0",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.0",

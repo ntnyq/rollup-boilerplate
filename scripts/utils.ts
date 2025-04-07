@@ -9,4 +9,5 @@ export const __dirname = fileURLToPath(new URL('.', import.meta.url))
  * @param args - path segments
  * @returns resolved path
  */
-export const resolve = (...args: string[]) => path.resolve(__dirname, '..', ...args)
+export const resolve = (...args: string[]) =>
+  path.resolve(__dirname, '..', ...args)

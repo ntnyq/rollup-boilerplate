@@ -7,11 +7,9 @@ export default defineConfig({
   },
 
   test: {
-    globals: true,
     reporters: ['dot'],
     coverage: {
       include: ['src/**/*.ts'],
-      provider: 'v8',
       reporter: ['text', 'lcov'],
     },
   },

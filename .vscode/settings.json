@@ -29,6 +29,7 @@
     "CODECOV",
     "esbuild",
     "lcov",
-    "pnpm"
+    "pnpm",
+    "unrs"
   ]
 }

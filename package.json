@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.3.0",
   "private": true,
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.30.1",
   "description": "JavaScript library develop boilerplate based on rollup",
   "keywords": [
     "library",
@@ -34,39 +34,44 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin esbuild",
     "coverage": "vitest --coverage",
-    "lint": "eslint",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "prepare": "husky",
-    "release": "bumpp",
+    "prepublishOnly": "pnpm run build",
+    "release:check": "run-s format:check lint typecheck test ",
+    "release": "run-s release:check release:version",
+    "release:version": "bumpp",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsgo --noEmit"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^5.6.0",
-    "@ntnyq/prettier-config": "^3.0.1",
-    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.4",
-    "@types/node": "^24.5.2",
-    "@vitest/coverage-v8": "^3.2.4",
-    "bumpp": "^10.2.3",
-    "eslint": "^9.36.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^25.3.0",
+    "@typescript/native-preview": "^7.0.0-dev.20260223.1",
+    "@vitest/coverage-v8": "^4.0.18",
+    "bumpp": "^10.4.1",
     "husky": "^9.1.7",
-    "nano-staged": "^0.8.0",
+    "nano-staged": "^0.9.0",
     "npm-run-all2": "^8.0.4",
-    "prettier": "^3.6.2",
-    "rollup": "^4.52.3",
+    "oxfmt": "^0.35.0",
+    "oxlint": "^1.50.0",
+    "rollup": "^4.59.0",
     "rollup-plugin-esbuild": "^6.2.1",
     "tslib": "^2.8.1",
-    "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   },
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=20.19.0"
   },
   "nano-staged": {
-    "*.{js,ts,mjs,cjs,md,yml,yaml,json}": "eslint --fix"
+    "*.{js,ts,mjs,tsx}": "oxlint --fix",
+    "*": "oxfmt --no-error-on-unmatched-pattern"
   }
 }

@@ -8,8 +8,8 @@ import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import { defineConfig } from 'rollup'
-import { resolve } from './scripts/utils'
 import type { RollupOptions } from 'rollup'
+import { resolve } from './scripts/utils'
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
 const banner = `\

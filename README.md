@@ -12,7 +12,7 @@
 - 🦔 Output `cjs`, `esm` and `umd` formats
 - 📦 Package manage via [pnpm](https://pnpm.io)
 - 🦾 Strong typecheck via [TypeScript](https://www.typescriptlang.org)
-- 📥 Code style check before git commit via [husky](https://typicode.github.io/husky), [nano-staged](https://github.com/usmanyunusov/nano-staged), [eslint](https://eslint.org)
+- 📥 Code style check before git commit via [husky](https://typicode.github.io/husky), [nano-staged](https://github.com/usmanyunusov/nano-staged), [oxlint](https://oxc.rs)
 - 🔥 Test via [vitest](https://vitest.dev/), it's blazing FAST
 
 ## License
